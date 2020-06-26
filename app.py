@@ -16,10 +16,10 @@ def createNotionMeetingNote(token, collectionURL, data):
     
     row.title = data.get('title')
     #row.person = data.get('person')
-    #row.date = data.get('date')
-    #row.mood = data.get('mood')
-    #row.tags = data.get('tags')
-    #row.type = data.get('type')
+    row.date = data.get('date')
+    row.mood = data.get('mood')
+    row.tags = data.get('tags')
+    row.type = data.get('type')
     #row.interviewer = data.get('interviewer')
 
 @app.route('/meeting_notes', methods=['POST'])
