@@ -1,2 +1,2 @@
 Flask==0.10.1
-notion
+-e git://github.com/brocoders/notion-py.git#egg=notion
