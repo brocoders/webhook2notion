@@ -52,7 +52,7 @@ def createNotionMeetingNote(token, collectionURL, data):
         req = {"recordVersionMap": {"notion_user": functools.reduce(lambda a,b: {**a, **{b['userId']: -1}} ,subscriptionData['members'], {})}}
         users = client.post("syncRecordValues", req).json()
 
-        for id, val in records['recordMap']['notion_user'].items():
+        for id, val in users['recordMap']['notion_user'].items():
             if val['value']['email'] == interviewer_str:
                 row.interviewer = client.get_user(id)
 
