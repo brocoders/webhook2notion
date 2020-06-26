@@ -17,8 +17,8 @@ def createNotionMeetingNote(token, collectionURL, data):
     row.title = data.get('title')
     #row.person = data.get('person')
     row.date = data.get('date')
-    row.mood = data.get('mood')
-    row.tags = data.get('tags')
+    row.mood = data.get('mood').split(",")
+    row.tags = data.get('tags').split(",")
     row.type = data.get('type')
     #row.interviewer = data.get('interviewer')
 
