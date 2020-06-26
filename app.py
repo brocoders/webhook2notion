@@ -8,7 +8,7 @@ from flask import request
 app = Flask(__name__)
 
 
-def createNotionTask(token, collectionURL, data):
+def createNotionMeetingNote(token, collectionURL, data):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
@@ -26,8 +26,8 @@ def createNotionTask(token, collectionURL, data):
 def create_meeting_note():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
-    createNotionTask(token_v2, url, request.form)
-    return f'added meeting note {data.get('title')} to Notion'
+    createNotionMeetingNote(token_v2, url, request.form)
+    return f'added meeting note to Notion'
 
 
 if __name__ == '__main__':
