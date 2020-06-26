@@ -43,7 +43,17 @@ def createNotionMeetingNote(token, collectionURL, data):
     row.mood = data.get('mood').split(",")
     row.tags = data.get('tags').split(",")
     row.type = data.get('type')
-    #row.interviewer = data.get('interviewer')
+    
+    interviewer_str = data.get('interviewer')
+    if interviewer_str:
+        subscriptionData = client.post("getSubscriptionData", {"spaceId": "9f910372-8d4d-469e-a834-81199f575be7"}).json()
+
+        req = {"recordVersionMap": {"notion_user": functools.reduce(lambda a,b: {**a, **{b['userId']: -1}} ,records['members'], {})}}
+        users = client.post("syncRecordValues", req).json()
+
+        for id, val in records['recordMap']['notion_user'].items():
+            if val['value']['email'] == interviewer_str:
+            row.interviewer = client.get_user(id)
 
 @app.route('/meeting_notes', methods=['POST'])
 def create_meeting_note():
