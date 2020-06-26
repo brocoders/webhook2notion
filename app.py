@@ -49,8 +49,8 @@ def createNotionMeetingNote(token, collectionURL, data):
 def create_meeting_note():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
-    return createNotionMeetingNote(token_v2, url, request.form)
-    #return f'added meeting note to Notion'
+    createNotionMeetingNote(token_v2, url, request.form)
+    return f'added meeting note to Notion'
 
 
 if __name__ == '__main__':
