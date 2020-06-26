@@ -1,4 +1,3 @@
-
 import os
 from notion.client import NotionClient
 from flask import Flask
@@ -16,7 +15,7 @@ def createNotionMeetingNote(token, collectionURL, data):
     
     row.title = data.get('title')
     #row.person = data.get('person')
-    row.date = data.get('date')
+    row.interview_date = data.get('interview_date')
     row.mood = data.get('mood').split(",")
     row.tags = data.get('tags').split(",")
     row.type = data.get('type')
