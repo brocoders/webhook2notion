@@ -49,7 +49,7 @@ def createNotionMeetingNote(token, collectionURL, data):
     if interviewer_str:
         subscriptionData = client.post("getSubscriptionData", {"spaceId": "9f910372-8d4d-469e-a834-81199f575be7"}).json()
 
-        req = {"recordVersionMap": {"notion_user": functools.reduce(lambda a,b: {**a, **{b['userId']: -1}} ,records['members'], {})}}
+        req = {"recordVersionMap": {"notion_user": functools.reduce(lambda a,b: {**a, **{b['userId']: -1}} ,subscriptionData['members'], {})}}
         users = client.post("syncRecordValues", req).json()
 
         for id, val in records['recordMap']['notion_user'].items():
