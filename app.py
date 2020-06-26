@@ -19,16 +19,15 @@ def createNotionTask(token, collectionURL, data):
     #row.date = data.get('date')
     #row.mood = data.get('mood')
     #row.tags = data.get('tags')
-    #row.todo = data.get('todo')
     #row.type = data.get('type')
     #row.interviewer = data.get('interviewer')
 
 @app.route('/meeting_notes', methods=['POST'])
-def create_todo():
+def create_meeting_note():
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
     createNotionTask(token_v2, url, request.form)
-    return f'added {todo} to Notion'
+    return f'added meeting note {data.get('title')} to Notion'
 
 
 if __name__ == '__main__':
