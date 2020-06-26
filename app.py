@@ -41,8 +41,8 @@ def createNotionMeetingNote(token, collectionURL, data):
     str_date = data.get('date') #6/25/2020 22:35:33
     if str_date:
         row.date = datetime.datetime.strptime(str_date, '%m/%d/%Y').date()
-    row.mood = data.get('mood').split(",")
-    row.tags = data.get('tags').split(",")
+    row.mood = data.get('mood').split(", ")
+    row.tags = data.get('tags').split(", ")
     row.type = data.get('type')
     
     interviewer_str = data.get('interviewer')
