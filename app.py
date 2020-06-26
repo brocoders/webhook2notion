@@ -3,6 +3,7 @@ from notion.client import NotionClient
 from flask import Flask
 from flask import request
 import datetime
+import functools
 
 app = Flask(__name__)
 
