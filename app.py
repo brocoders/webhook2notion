@@ -54,7 +54,7 @@ def createNotionMeetingNote(token, collectionURL, data):
 
         for id, val in records['recordMap']['notion_user'].items():
             if val['value']['email'] == interviewer_str:
-            row.interviewer = client.get_user(id)
+                row.interviewer = client.get_user(id)
 
 @app.route('/meeting_notes', methods=['POST'])
 def create_meeting_note():
