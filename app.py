@@ -8,22 +8,26 @@ from flask import request
 app = Flask(__name__)
 
 
-def createNotionTask(token, collectionURL, content):
+def createNotionTask(token, collectionURL, data):
     # notion
     client = NotionClient(token)
     cv = client.get_collection_view(collectionURL)
     row = cv.collection.add_row()
-    row.title = content
-    row.mood = 'kkk'
+    
+    row.title = data.get('title')
+    row.person = data.get('person')
+    row.date = data.get('date')
+    row.mood = data.get('mood')
+    row.tags = data.get('tags')
+    row.todo = data.get('todo')
+    row.type = data.get('type')
+    row.interviewer = data.get('interviewer')
 
-
-@app.route('/create_todo', methods=['GET'])
+@app.route('/meeting_notes', methods=['POST'])
 def create_todo():
-
-    todo = request.args.get('todo')
     token_v2 = os.environ.get("TOKEN")
     url = os.environ.get("URL")
-    createNotionTask(token_v2, url, todo)
+    createNotionTask(token_v2, url, request.form)
     return f'added {todo} to Notion'
 
 
