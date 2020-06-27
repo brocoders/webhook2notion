@@ -1,4 +1,5 @@
 import os
+import io
 from notion.client import NotionClient
 from flask import Flask
 from flask import request
