@@ -64,6 +64,7 @@ def createNotionMeetingNote(token, collectionURL, data):
     if about_str:
         row.children.add_new(SubsubheaderBlock, title="About")
         lines = io.StringIO(about_str)
+        lines.name = '/'
         upload(lines, row)
         #row.children.add_new(TextBlock, title=about_str)
     
@@ -71,6 +72,7 @@ def createNotionMeetingNote(token, collectionURL, data):
     if summary_str:
         row.children.add_new(SubsubheaderBlock, title="Summary")
         lines = io.StringIO(summary_str)
+        lines.name = '/'
         upload(lines, row)
         #row.children.add_new(TextBlock, title=summary_str)
         
@@ -78,6 +80,7 @@ def createNotionMeetingNote(token, collectionURL, data):
     if action_points_str:
         row.children.add_new(SubsubheaderBlock, title="Action points")
         lines = io.StringIO(action_points_str)
+        lines.name = '/'
         upload(lines, row)
         #row.children.add_new(TextBlock, title=action_points_str)
 
