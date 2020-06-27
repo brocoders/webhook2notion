@@ -6,6 +6,7 @@ import datetime
 import functools
 from notion.block import SubsubheaderBlock
 from notion.block import TextBlock
+from md2notion.upload import upload
 
 app = Flask(__name__)
 
@@ -61,17 +62,23 @@ def createNotionMeetingNote(token, collectionURL, data):
     about_str = data.get('about')
     if about_str:
         row.children.add_new(SubsubheaderBlock, title="About")
-        row.children.add_new(TextBlock, title=about_str)
+        lines = io.StringIO(about_str)
+        upload(lines, row)
+        #row.children.add_new(TextBlock, title=about_str)
     
     summary_str = data.get('summary')
     if summary_str:
         row.children.add_new(SubsubheaderBlock, title="Summary")
-        row.children.add_new(TextBlock, title=summary_str)
+        lines = io.StringIO(summary_str)
+        upload(lines, row)
+        #row.children.add_new(TextBlock, title=summary_str)
         
     action_points_str = data.get('action_points')
     if action_points_str:
         row.children.add_new(SubsubheaderBlock, title="Action points")
-        row.children.add_new(TextBlock, title=action_points_str)
+        lines = io.StringIO(action_points_str)
+        upload(lines, row)
+        #row.children.add_new(TextBlock, title=action_points_str)
 
 @app.route('/meeting_notes', methods=['POST'])
 def create_meeting_note():
